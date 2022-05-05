@@ -1,11 +1,19 @@
+import * as types from "./actionType";
+
 const initialState = {
     students: [],
-    student: [],
-    loading: false
+    student: {},
+    loading: true,
 }
 
 const studentsReducers = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
+        case types.GET_STUDENTS:
+            return {
+                ...state,
+                students: action.payload,
+                loading: false,
+            }
         default:
             return state;
     }
