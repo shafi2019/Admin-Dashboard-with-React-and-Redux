@@ -13,6 +13,13 @@
       "email": "john@gmail.com",
       "phone": "4180202111",
       "id": 2
+    },
+    {
+      "name": "Mohammad Shafi ",
+      "address": "Sacramento, California ",
+      "email": "shafi@gmail.com",
+      "phone": "9162314567",
+      "id": 3
     }
   ]
 }

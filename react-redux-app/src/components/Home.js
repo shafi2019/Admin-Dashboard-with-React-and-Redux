@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteStudent, loadStudents } from '../redux/actions';
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -41,6 +42,10 @@ const StyledTable = styled(Table)(() => ({
 function DataTable() {
     let dispatch = useDispatch();
     const { students } = useSelector((state) => state.data)
+    let navigate = useNavigate()
+    const routeChange = () => {  
+        navigate("/addStudent");
+    }
 
     useEffect(() => {
         dispatch(loadStudents());
@@ -53,40 +58,48 @@ function DataTable() {
     }
 
     return (
-        <TableContainer component={Paper} width="500px">
-            <StyledTable sx={{ minWidth: 500 }} aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Name</StyledTableCell>
-                        <StyledTableCell align="center">Address</StyledTableCell>
-                        <StyledTableCell align="center">Email</StyledTableCell>
-                        <StyledTableCell align="center">Phone Number</StyledTableCell>
-                        <StyledTableCell align="center">Action</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {students && students.map((student) => (
-                        <StyledTableRow key={student.id}>
-                            <StyledTableCell component="th" scope="row">
-                                {student.name}
-                            </StyledTableCell>
-                            <StyledTableCell align="center">{student.address}</StyledTableCell>
-                            <StyledTableCell align="center">{student.emal}</StyledTableCell>
-                            <StyledTableCell align="center">{student.phone}</StyledTableCell>
-                            <StyledTableCell align="center">
-                                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                    <Button
-                                        style={{ marginRight: "10px" }}
-                                        color="secondary"
-                                        onClick={() => handleDelete(student.id)}>Delete</Button>
-                                    <Button color="primary">Edit</Button>
-                                </ButtonGroup>
-                            </StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                </TableBody>
-            </StyledTable>
-        </TableContainer>
+        <div>
+            <TableContainer component={Paper} width="500px">
+                <StyledTable sx={{ minWidth: 500 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Name</StyledTableCell>
+                            <StyledTableCell align="center">Address</StyledTableCell>
+                            <StyledTableCell align="center">Email</StyledTableCell>
+                            <StyledTableCell align="center">Phone Number</StyledTableCell>
+                            <StyledTableCell align="center">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {students && students.map((student) => (
+                            <StyledTableRow key={student.id}>
+                                <StyledTableCell component="th" scope="row">
+                                    {student.name}
+                                </StyledTableCell>
+                                <StyledTableCell align="center">{student.address}</StyledTableCell>
+                                <StyledTableCell align="center">{student.emal}</StyledTableCell>
+                                <StyledTableCell align="center">{student.phone}</StyledTableCell>
+                                <StyledTableCell align="center">
+                                    <ButtonGroup variant="contained" aria-label="outlined primary button group">``
+                                        <Button
+                                            style={{ marginRight: "10px" }}
+                                            color="secondary"
+                                            onClick={() => handleDelete(student.id)}>Delete</Button>
+                                        <Button color="primary">Edit</Button>
+                                    </ButtonGroup>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </StyledTable>
+            </TableContainer>
+            <div>
+                <Button variant="contained" 
+                style={{ marginTop: "50px", marginRight: "500" }}
+                onClick={routeChange}
+                >Add Student</Button>
+            </div>
+        </div>
     );
 }
 

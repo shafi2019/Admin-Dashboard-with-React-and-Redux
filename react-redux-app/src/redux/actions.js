@@ -10,6 +10,10 @@ const studentDelete = () => ({
     type: types.DELETE_STUDENT
 })
 
+const studentAdd = () => ({
+    type: types.ADD_STUDENT
+})
+
 export const loadStudents = () => {
     return function (dispatch) {
         axios.get(`${process.env.REACT_APP_API}`)
@@ -26,6 +30,17 @@ export const deleteStudent = (id) => {
             .then((res) => {
                 dispatch(studentDelete())
                 dispatch(loadStudents());
+            }).catch(error => console.log(error))
+    }
+}
+
+
+export const addStudent = (student) => {
+    return function (dispatch) {
+        axios
+            .post(`${process.env.REACT_APP_API}`, student)
+            .then((res) => {
+                dispatch(studentAdd())
             }).catch(error => console.log(error))
     }
 }
