@@ -1,25 +1,18 @@
 {
-    "student": [
-        {
-            "name": "Shafi",
-            "address": "Sacramento",
-            "email": "shafi@gmail.com",
-            "phone": "9160202020",
-            "id": 1
-        },
-        {
-            "name": "John",
-            "address": "San Jose",
-            "email": "john@gmail.com",
-            "phone": "4180202111",
-            "id": 2
-        },
-        {
-            "name": "Mike",
-            "address": "San Francisco",
-            "email": "mike@gmail.com",
-            "phone": "41545612324",
-            "id": 3
-        }
-    ]
-} 
+  "student": [
+    {
+      "name": "Shafi",
+      "address": "Sacramento",
+      "email": "shafi@gmail.com",
+      "phone": "9160202020",
+      "id": 1
+    },
+    {
+      "name": "John",
+      "address": "San Jose",
+      "email": "john@gmail.com",
+      "phone": "4180202111",
+      "id": 2
+    }
+  ]
+}

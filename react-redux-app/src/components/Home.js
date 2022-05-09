@@ -7,8 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStudents } from '../redux/actions';
+import { deleteStudent, loadStudents } from '../redux/actions';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -30,52 +32,60 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
+const StyledTable = styled(Table)(() => ({
+    marign: 100,
+    width: 1200,
+}));
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 function DataTable() {
     let dispatch = useDispatch();
-      const { students } = useSelector((state) => state.data)
+    const { students } = useSelector((state) => state.data)
 
     useEffect(() => {
-        dispatch(loadStudents())
-    }, [])
+        dispatch(loadStudents());
+    }, []);
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete student")) {
+            dispatch(deleteStudent(id))
+        }
+    }
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableContainer component={Paper} width="500px">
+            <StyledTable sx={{ minWidth: 500 }} aria-label="customized table">
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Name</StyledTableCell>
-                        <StyledTableCell align="right">Address</StyledTableCell>
-                        <StyledTableCell align="right">Email</StyledTableCell>
-                        <StyledTableCell align="right">Phone Number</StyledTableCell>
-                        <StyledTableCell align="right">Action</StyledTableCell>
+                        <StyledTableCell align="center">Address</StyledTableCell>
+                        <StyledTableCell align="center">Email</StyledTableCell>
+                        <StyledTableCell align="center">Phone Number</StyledTableCell>
+                        <StyledTableCell align="center">Action</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-            {students && students.map((student) => (
-            <StyledTableRow key={student.id}>
-              <StyledTableCell component="th" scope="row">
-                {student.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{student.address}</StyledTableCell>
-              <StyledTableCell align="right">{student.emal}</StyledTableCell>
-              <StyledTableCell align="right">{student.phone}</StyledTableCell>
-              <StyledTableCell align="right"></StyledTableCell>
-            </StyledTableRow>
-          ))}
+                    {students && students.map((student) => (
+                        <StyledTableRow key={student.id}>
+                            <StyledTableCell component="th" scope="row">
+                                {student.name}
+                            </StyledTableCell>
+                            <StyledTableCell align="center">{student.address}</StyledTableCell>
+                            <StyledTableCell align="center">{student.emal}</StyledTableCell>
+                            <StyledTableCell align="center">{student.phone}</StyledTableCell>
+                            <StyledTableCell align="center">
+                                <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                                    <Button
+                                        style={{ marginRight: "10px" }}
+                                        color="secondary"
+                                        onClick={() => handleDelete(student.id)}>Delete</Button>
+                                    <Button color="primary">Edit</Button>
+                                </ButtonGroup>
+                            </StyledTableCell>
+                        </StyledTableRow>
+                    ))}
                 </TableBody>
-            </Table>
+            </StyledTable>
         </TableContainer>
     );
 }

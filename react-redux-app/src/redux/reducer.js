@@ -13,7 +13,12 @@ const studentsReducers = (state = initialState, action) => {
                 ...state,
                 students: action.payload,
                 loading: false,
-            }
+            };
+        case types.DELETE_STUDENT:
+            return {
+                ...state,
+                loading: false
+            } 
         default:
             return state;
     }
