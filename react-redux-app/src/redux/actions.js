@@ -14,6 +14,10 @@ const studentAdd = () => ({
     type: types.ADD_STUDENT
 })
 
+const studentUpdate = () => ({
+    type: types.UPDATE_STUDENT
+})
+
 const getStudent = (student) => ({
     type: types.GET_SINGLE_STUDENT,
     payload: student
@@ -60,3 +64,14 @@ export const getSingleStudent = (id) => {
             }).catch(error => console.log(error))
     }
 }
+
+export const updateStudent = (student, id) => {
+    return function (dispatch) {
+        axios
+            .put(`${process.env.REACT_APP_API}/${id}`, student)
+            .then((res) => {
+                dispatch(studentUpdate());
+            }).catch(error => console.log(error))
+    }
+}
+

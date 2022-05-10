@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addStudent, getSingleStudent } from '../redux/actions';
+import { updateStudent, getSingleStudent } from '../redux/actions';
 
 const EditStudent = () => {
     const [state, setState] = useState({
@@ -26,9 +26,9 @@ const EditStudent = () => {
         if (student) {
             setState({...student})
         }
-    }, [])
+    }, [student])
     const navigate = useNavigate();
-    const routeChange = () => {
+    const routeChangeTo = () => {
         navigate("/")
     }
     let dispatch = useDispatch();
@@ -43,16 +43,16 @@ const EditStudent = () => {
         if(!name || !address || !email || !phone) {
             setError("Please fill all input field")
         } else {
-            dispatch(addStudent(state));
-            routeChange()
+            dispatch(updateStudent(state, id));
+            routeChangeTo()
             setError("");
         }
     }
 
     return (
-        <div>
+        <div> 
             <Button variant="contained" color="primary"
-                onClick={routeChange}
+                onClick={routeChangeTo}
                 style={{ marginRight: "85%", marginTop: "3%" }}>Go Back</Button>
             <h1>Edit Student</h1>
             {error && <h3 style={{color: "red"}}>{error}</h3>}
@@ -70,7 +70,7 @@ const EditStudent = () => {
                     label="Name"
                     name="name"
                     variant="standard"
-                    value={name}
+                    value={name || ""}
                     type="text"
                     onChange={handleChange}
                 />
@@ -80,7 +80,7 @@ const EditStudent = () => {
                     label="Address"
                     name="address"
                     variant="standard"
-                    value={address}
+                    value={address || ""}
                     type="text"
                     onChange={handleChange}
                 />
@@ -90,7 +90,7 @@ const EditStudent = () => {
                     label="Email"
                     name="email"
                     variant="standard"
-                    value={email}
+                    value={email || ""}
                     type="email"
                     onChange={handleChange}
                 />
@@ -100,7 +100,7 @@ const EditStudent = () => {
                     label="Phone"
                     name="phone"
                     variant="standard"
-                    value={phone}
+                    value={phone || ""}
                     type="number"
                     onChange={handleChange}
                 />

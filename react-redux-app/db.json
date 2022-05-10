@@ -1,10 +1,10 @@
 {
   "student": [
     {
-      "name": "Shafi",
-      "address": "Sacramento",
-      "email": "shafi@gmail.com",
-      "phone": "9160202020",
+      "name": "Shafi Masoumi",
+      "address": "Sacramento, CA",
+      "email": "shafijan@gmail.com",
+      "phone": "9160202012",
       "id": 1
     },
     {
@@ -27,6 +27,13 @@
       "email": "shafi@yahoo.com",
       "phone": "9167895461",
       "id": 4
+    },
+    {
+      "name": "Omer Jan",
+      "address": "San Diego",
+      "email": "omer@gmail.com",
+      "phone": "4514567894",
+      "id": 5
     }
   ]
 }

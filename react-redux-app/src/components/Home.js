@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const StyledTable = styled(Table)(() => ({
     marign: 100,
-    width: 1200,
+    width: 1080,
 }));
 
 

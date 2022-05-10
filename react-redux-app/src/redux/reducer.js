@@ -16,6 +16,7 @@ const studentsReducers = (state = initialState, action) => {
             };
         case types.DELETE_STUDENT:
         case types.ADD_STUDENT:
+        case types.UPDATE_STUDENT:
             return {
                 ...state,
                 loading: false
