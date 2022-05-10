@@ -20,6 +20,12 @@ const studentsReducers = (state = initialState, action) => {
                 ...state,
                 loading: false
             } 
+        case types.GET_SINGLE_STUDENT:
+            return {
+                ...state,
+                student: action.payload,
+                loading: false,
+            }
         default:
             return state;
     }

@@ -43,7 +43,7 @@ function DataTable() {
     let dispatch = useDispatch();
     const { students } = useSelector((state) => state.data)
     let navigate = useNavigate()
-    const routeChange = () => {  
+    const routeChange = () => {
         navigate("/addStudent");
     }
 
@@ -56,6 +56,7 @@ function DataTable() {
             dispatch(deleteStudent(id))
         }
     }
+
 
     return (
         <div>
@@ -85,7 +86,11 @@ function DataTable() {
                                             style={{ marginRight: "10px" }}
                                             color="secondary"
                                             onClick={() => handleDelete(student.id)}>Delete</Button>
-                                        <Button color="primary">Edit</Button>
+                                        <Button
+                                            color="primary"
+                                            onClick={() => navigate(`/editStudent/${student.id}`)}
+                                        >
+                                            Edit</Button>
                                     </ButtonGroup>
                                 </StyledTableCell>
                             </StyledTableRow>
@@ -94,9 +99,9 @@ function DataTable() {
                 </StyledTable>
             </TableContainer>
             <div>
-                <Button variant="contained" 
-                style={{ marginTop: "50px", marginRight: "500" }}
-                onClick={routeChange}
+                <Button variant="contained"
+                    style={{ marginTop: "50px", marginRight: "500" }}
+                    onClick={routeChange}
                 >Add Student</Button>
             </div>
         </div>
