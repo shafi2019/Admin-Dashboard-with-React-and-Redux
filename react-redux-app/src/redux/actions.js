@@ -27,7 +27,6 @@ export const loadStudents = () => {
     return function (dispatch) {
         axios.get(`${process.env.REACT_APP_API}`)
             .then((res) => {
-                console.log(res)
                 dispatch(getStudents(res.data))
             }).catch(error => console.log(error))
     }
@@ -51,6 +50,7 @@ export const addStudent = (student) => {
             .post(`${process.env.REACT_APP_API}`, student)
             .then((res) => {
                 dispatch(studentAdd())
+                dispatch(loadStudents());
             }).catch(error => console.log(error))
     }
 }

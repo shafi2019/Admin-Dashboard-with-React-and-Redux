@@ -1,39 +1,39 @@
 {
   "student": [
     {
-      "name": "Shafi Masoumi",
-      "address": "Sacramento, CA",
-      "email": "shafijan@gmail.com",
-      "phone": "9160202012",
-      "id": 1
+      "name": "Omer",
+      "address": "Sacramento",
+      "email": "omer@gmail.com",
+      "phone": "9164567894",
+      "id": 6
     },
     {
-      "name": "John",
-      "address": "San Jose",
-      "email": "john@gmail.com",
-      "phone": "4180202111",
-      "id": 2
+      "name": "Javid",
+      "address": "Howe Ave",
+      "email": "javid@gmail.com",
+      "phone": "9169874561",
+      "id": 7
     },
     {
-      "name": "Mohammad Shafi ",
-      "address": "Sacramento, California ",
-      "email": "shafi@gmail.com",
-      "phone": "9162314567",
-      "id": 3
+      "name": "Zabi",
+      "address": "Florin",
+      "email": "zabi@gmail.com",
+      "phone": "9165456789",
+      "id": 8
     },
     {
       "name": "Shafi",
-      "address": "Sacramento",
-      "email": "shafi@yahoo.com",
-      "phone": "9167895461",
-      "id": 4
+      "address": "Cottage way",
+      "email": "shafi@gmail.com",
+      "phone": "9166200345",
+      "id": 9
     },
     {
-      "name": "Omer Jan",
-      "address": "San Diego",
-      "email": "omer@gmail.com",
-      "phone": "4514567894",
-      "id": 5
+      "name": "Muzamel",
+      "address": "Jan Padar",
+      "email": "muzamel@gmail.com",
+      "phone": "9164567894",
+      "id": 10
     }
   ]
 }

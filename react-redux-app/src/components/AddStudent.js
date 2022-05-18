@@ -22,8 +22,8 @@ const AddStudent = () => {
     let dispatch = useDispatch();
 
     const handleChange = (e) => {
-        let { name, value } = e.target;
-        setState({ ...state, [name]: value });
+        console.log(e.target.value)
+        setState({ ...state, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
@@ -58,7 +58,7 @@ const AddStudent = () => {
                     label="Name"
                     name="name"
                     variant="standard"
-                    value={name}
+                    value={state.name}
                     type="text"
                     onChange={handleChange}
                 />
@@ -68,7 +68,7 @@ const AddStudent = () => {
                     label="Address"
                     name="address"
                     variant="standard"
-                    value={address}
+                    value={state.address}
                     type="text"
                     onChange={handleChange}
                 />
@@ -78,7 +78,7 @@ const AddStudent = () => {
                     label="Email"
                     name="email"
                     variant="standard"
-                    value={email}
+                    value={state.email}
                     type="email"
                     onChange={handleChange}
                 />
@@ -88,7 +88,7 @@ const AddStudent = () => {
                     label="Phone"
                     name="phone"
                     variant="standard"
-                    value={phone}
+                    value={state.phone}
                     type="number"
                     onChange={handleChange}
                 />
